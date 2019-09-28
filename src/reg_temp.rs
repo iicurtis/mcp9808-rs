@@ -30,12 +30,10 @@ impl Temperature for Register {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     /// prevent auto-format fuckup
     use super::*;
-
 
     #[test]
     fn alert_critical() {

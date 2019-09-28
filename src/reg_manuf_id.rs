@@ -1,5 +1,5 @@
-use reg::Register;
 use prelude::Read;
+use reg::Register;
 
 const REGISTER_PTR: u8 = 0b0110;
 const MANUFACTURER_ID: u16 = 0x0054;

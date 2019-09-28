@@ -1,10 +1,9 @@
-use reg::Register;
 use prelude::Read;
+use reg::Register;
 
 const REGISTER_PTR: u8 = 0b0111;
 const REGISTER_SIZE: u8 = 2;
 const DEVICE_ID: u8 = 0x04;
-
 
 pub trait DeviceId: Read {
     /// is the deviceId what it should be?

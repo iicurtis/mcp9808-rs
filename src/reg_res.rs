@@ -1,5 +1,5 @@
-use reg::Register;
 use prelude::Write;
+use reg::Register;
 
 const REGISTER_PTR: u8 = 0b1000;
 const REGISTER_SIZE: u8 = 1;
@@ -35,7 +35,7 @@ impl Resolution for Register {
             0b01 => ResolutionVal::Deg_0_25C,
             0b10 => ResolutionVal::Deg_0_125C,
             0b11 => ResolutionVal::Deg_0_0625C,
-            _ => panic!("invalid resolution")
+            _ => panic!("invalid resolution"),
         }
     }
 
@@ -43,7 +43,6 @@ impl Resolution for Register {
         self.set_msb(p as u8);
     }
 }
-
 
 #[cfg(test)]
 mod tests {

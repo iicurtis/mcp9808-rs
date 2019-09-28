@@ -1,6 +1,6 @@
 use bit_field::BitField;
-use reg::Register;
 use prelude::Write;
+use reg::Register;
 
 /// Alert Output Mode bit
 /// This bit cannot be altered when either of the Lock bits are set (bit 6 and bit 7).
@@ -255,7 +255,7 @@ impl Configuration for Register {
             val if val == Hysteresis::Deg_1_5C as u8 => Hysteresis::Deg_1_5C,
             val if val == Hysteresis::Deg_3_0C as u8 => Hysteresis::Deg_3_0C,
             val if val == Hysteresis::Deg_6_0C as u8 => Hysteresis::Deg_6_0C,
-            _ => panic!("invalid value")
+            _ => panic!("invalid value"),
         }
     }
 }
@@ -264,7 +264,6 @@ impl Configuration for Register {
 fn bool(val: isize) -> bool {
     val != 0
 }
-
 
 #[cfg(test)]
 mod tests {
