@@ -1,12 +1,5 @@
-extern crate cast;
-
 #[allow(unused_imports)]
 use core::f32;
-//use cast::u16;
-//use cast::u8;
-use cast::i16;
-//use cast::i32;
-use cast::f32;
 use prelude::Read;
 use prelude::Write;
 use reg::Register;
@@ -40,7 +33,7 @@ impl ReadableTempRegister for Register {
 
         let temp_dec = get_decimal_part(high, low);
 
-        let mut ftemp = f32(temp_dec);
+        let mut ftemp = f32::from(temp_dec);
         ftemp += get_fractional_part_float(res, low);
         ftemp
     }
@@ -69,7 +62,7 @@ pub trait WritableTempRegister: ReadableTempRegister + Write {
 
 impl WritableTempRegister for Register {
     fn set_celcius(&mut self, val: f32) {
-        if val >= f32(RANGE_LIMIT) || val <= -f32(RANGE_LIMIT) {
+        if val >= f32::from(RANGE_LIMIT) || val <= -f32::from(RANGE_LIMIT) {
             panic!(
                 "temperature {} exceeds valid range of +-{}",
                 val, RANGE_LIMIT
@@ -129,9 +122,9 @@ fn get_decimal_part(mut high: u8, low: u8) -> i16 {
     // sign bit set, < 0°C
     if high & BIT_SIGN == BIT_SIGN {
         high = high & 0x0f; // clear sign bit
-        256 - (i16(high) * 16 + i16(low) / 16)
+        256 - (i16::from(high) * 16 + i16::from(low) / 16)
     } else {
-        i16(high) * 16 + i16(low) / 16
+        i16::from(high) * 16 + i16::from(low) / 16
     }
 }
 
@@ -142,7 +135,7 @@ fn get_fractional_part_dec(res: ResolutionVal, low: u8) -> u16 {
 
 fn get_fractional_part_float(res: ResolutionVal, low: u8) -> f32 {
     let fract = low & 0x000F; // mask nibble
-    f32(fract >> (3 - res as u8)) * get_precision_factor_float(res)
+    f32::from(fract >> (3 - res as u8)) * get_precision_factor_float(res)
 }
 
 //fn set_fractional_part_float(res: ResolutionVal, val: f32) {}

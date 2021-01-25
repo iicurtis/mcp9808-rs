@@ -2,7 +2,6 @@
 #![no_std]
 
 extern crate bit_field;
-extern crate cast;
 extern crate embedded_hal as hal;
 
 use hal::blocking::i2c;

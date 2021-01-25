@@ -10,12 +10,8 @@ description = "Platform agnostic Rust driver for the Microchip MCP9808 temperatu
 readme = "README.md"
 
 [dependencies]
-embedded-hal = "0.2.3"
+embedded-hal = "0.2"
 bit_field = "0.10"
-
-[dependencies.cast]
-version = "0.2.2"
-default-features = false
 
 [profile.release]
 debug = true
